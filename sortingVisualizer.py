@@ -18,14 +18,13 @@ from sortingAlgo.quickSort import quickSort
 
 algos = ["bubble sort", "selection sort", "insertion sort", "merge sort", "quick sort", "heap sort"]
 sortingFunctions = [bubbleSort,selectionSort,insertionSort,mergeSort,quickSort,heapSort]
-xpointsN = []
 N = 9 #Number of points
-for i in range(100,100*N+1,100):
-    xpointsN.append(i)
-print(xpointsN)
-timeAxis = []
+xpointsN = list(range(100,100*N+1,100)) #100,200,300,400,500,600,700,800,900
 
-array = np.random.randint(1,100,100*(N+1)) #defining a fixed large array to computer all the sorting operations on 
+print(xpointsN)
+timeAxis = [] #2D list containing the list of time values corrsponding to each N value for each sorting algo 
+
+array = np.random.randint(1,100,100*(N+1)) #defining a fixed large array to compute all the sorting operations on 
 
 def calculateTime(array,n,sort):
     temp = array
