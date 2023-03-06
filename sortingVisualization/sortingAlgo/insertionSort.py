@@ -6,3 +6,4 @@ def insertionSort(nums,n):
             nums[index+1] = nums[index]
             index-=1
         nums[index+1] = value
+
