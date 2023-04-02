@@ -27,13 +27,13 @@ def merge(nums,left,mid,right):
         j+=1
         k+=1
 
-
-def divideAndConquer(nums,left,right):
+def divideAndConquer(arr,left,right):
     if left<right:
         mid = left + (right-left)//2
-        divideAndConquer(nums,left,mid)
-        divideAndConquer(nums,mid+1,right)
-        merge(nums,left,mid,right)
 
-def mergeSort(nums,n):
-    divideAndConquer(nums,0,n-1)
+        divideAndConquer(arr,left,mid)
+        divideAndConquer(arr,mid+1,right)
+        merge(arr,left,mid,right)
+
+def mergeSort(arr,n):
+    divideAndConquer(arr,0,n-1)

@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+import random 
+import copy
+
+from algorithms.bruteforce import bruteforce
+from algorithms.divideAndConquer import divideAndConquer
+
+algos = ["Bruteforce Algorithm","Divide And Conquer Algorithm"]
+matchingAlgorithms = [bruteforce,divideAndConquer]
+N = 20 #Number of points
+
+xpointsN = [2]
+for i in range(N-1):
+    xpointsN.append(xpointsN[-1]*2)
+print(xpointsN)
+timeAxis = [] #2D list containing the list of time values corrsponding to each N value for each sorting algo 
+
+array = np.random.randint(2,1000,1001*N)
+# print(array)
+def calculateTime(array,n,findMinMaxAlgo):
+    temp = array[:n]
+    startTime = time.time()
+    findMinMaxAlgo(temp)
+    completeTime = time.time()
+    return completeTime - startTime
+
+for i in range(0,2): #for each algorithm
+    timeArray = []
+    for j in range(0,len(xpointsN)): #for each value of N(number of elements in array)
+        timeArray.append(calculateTime(array,xpointsN[j],matchingAlgorithms[i])) #time taken by ith algorithm for xpointsN[j] number of elements
+    timeAxis.append(timeArray)
+for i in range(0,2):
+    plt.plot(xpointsN,timeAxis[i],label=algos[i])
+
+
+plt.xlabel('Size of Input')
+plt.ylabel('Time Complexity')
+plt.grid()
+plt.legend()
+plt.show()
+
+
+
+
+
+

@@ -34,6 +34,6 @@ def divideAndConquer(nums,left,right):
         divideAndConquer(nums,left,mid)
         divideAndConquer(nums,mid+1,right)
         merge(nums,left,mid,right)
-
+    
 def mergeSort(nums,n):
-    divideAndConquer(nums,0,n-1)
+    return divideAndConquer(nums,0,n-1)

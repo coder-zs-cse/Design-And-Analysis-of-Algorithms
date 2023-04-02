@@ -28,7 +28,7 @@ def calculateTime(array,n,sort):
     completeTime = time.time()
     return completeTime - startTime
 
-for i in range(0,6): #for each algorithm
+for i in range(0,len(algos)): #for each algorithm
     timeArray = []
     for j in range(0,len(xpointsN)): #for each value of N(number of elements in array)
         timeArray.append(calculateTime(array,xpointsN[j],sortingFunctions[i])) #time taken by ith algorithm for xpointsN[j] number of elements

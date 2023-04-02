@@ -26,14 +26,27 @@ def merge(nums,left,mid,right):
         nums[k] = rightArr[j]
         j+=1
         k+=1
+            
+def mergefourway(arr,left,mid1,mid,mid2,right):
+    merge(arr,left,mid1,mid)
+    merge(arr,mid+1,mid2,right)
+    merge(arr,left,mid,right)
 
 
-def divideAndConquer(nums,left,right):
+def divideAndConquerModified(arr,left,right):
     if left<right:
         mid = left + (right-left)//2
-        divideAndConquer(nums,left,mid)
-        divideAndConquer(nums,mid+1,right)
-        merge(nums,left,mid,right)
+        mid1 = left + (mid-left)//2
+        mid2 = mid+1 + (right-mid-1)//2
 
-def mergeSort(nums,n):
-    divideAndConquer(nums,0,n-1)
+        divideAndConquerModified(arr,mid1+1,mid)
+        divideAndConquerModified(arr,left,mid1)
+        divideAndConquerModified(arr,mid+1,mid2)
+        divideAndConquerModified(arr,mid2+1,right)
+
+        mergefourway(arr,left,mid1,mid,mid2,right)
+    
+        
+
+def modifiedMergeSort(arr,n):
+    divideAndConquerModified(arr,0,n-1)
