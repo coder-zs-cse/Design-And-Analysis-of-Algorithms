@@ -24,18 +24,35 @@ ull int power(ull n,int x){
     return n * power(n,x-1);
 }
 
+int mediansOfMedians(vector<int> &nums,int n){
+    vector<int> medians;
+    for(int i=0;i<n;){
+        int j = i;
+        vector<int> temp;
+        while(j<n && j-i+1<=5){
+            temp.pb(nums[j]);
+            j++;
+        }
+        i = j;
+        sort(temp.begin(),temp.end());
+        medians.pb(temp[2]);
+    }
+    sort(medians.begin(),medians.end());
+    return medians[medians.size()/2];
+}
+
 int medianDivideAndConquer(vector<int> &nums,ll int n,ll int t=-1){
     if(t==-1) t=n/2;
     if(nums.size()==2) return max(nums[0],nums[1]);
     if(nums.size()==1) return nums[0];
-    int pivot = nums[rand()%n];
+    int pivot = mediansOfMedians(nums,n);
     vector<int> lower,upper;
     rep(i,0,n){
         if(nums[i]<pivot) lower.pb(nums[i]);
         else if(nums[i]>=pivot) upper.pb(nums[i]);
     }
     int k = lower.size();
-    cout<<pivot<<" "<<k<<" "<<t<<endl;
+    // cout<<pivot<<" "<<k<<" "<<t<<endl;
     if(k==t) return pivot;
     if(k<t){
         return medianDivideAndConquer(upper,n-k,t-k);
