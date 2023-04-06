@@ -17,7 +17,7 @@ class UnionFind{
         return false;
     }
     int findRank(int a){
-        if(rank[a]!=a) return findRank(rank[a]);
+        if(rank[a]!=a) return rank[a] = findRank(rank[a]);
         return a;
     }
 };

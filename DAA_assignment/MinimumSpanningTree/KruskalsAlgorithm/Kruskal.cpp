@@ -37,7 +37,7 @@ vector<vector<int>> MST_Kruskal(int V,int E,vector<vector<vector<int>>> &edges){
         }
     }
     UnionFind dsfu(V); 
-    sort(totalEdges.begin(),totalEdges.end()); // sorting according to coost
+    sort(totalEdges.begin(),totalEdges.end()); // sorting according to cost
     int index = 0;
     rep(i,0,V-1){
         while(dsfu.checkCycle(totalEdges[index][1],totalEdges[index][2])){  //checking cycle exists or not through DSFU algo
