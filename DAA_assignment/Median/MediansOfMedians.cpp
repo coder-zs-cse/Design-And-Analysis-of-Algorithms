@@ -52,11 +52,8 @@ int medianDivideAndConquer(vector<int> &nums,ll int n,ll int t=-1){
         else if(nums[i]>=pivot) upper.pb(nums[i]);
     }
     int k = lower.size();
-    // cout<<pivot<<" "<<k<<" "<<t<<endl;
     if(k==t) return pivot;
-    if(k<t){
-        return medianDivideAndConquer(upper,n-k,t-k);
-    }
+    if(k<t) return medianDivideAndConquer(upper,n-k,t-k);
     else return medianDivideAndConquer(lower,k,t);
 
 
