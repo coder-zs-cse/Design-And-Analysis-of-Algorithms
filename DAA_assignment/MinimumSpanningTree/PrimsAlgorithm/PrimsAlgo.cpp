@@ -35,7 +35,7 @@ vector<vector<int>> MST_Prims(int V,int E,vector<vector<vector<int>>> &edges){
     }
     vector<int> visited(V+1,0);
     visited[1] = 1; //Initialized X as {1}
-    rep(i,1,V){
+    rep(i,1,V){ 
         while(visited[pq.top()[1]]){  
             pq.pop();  //pop away any internal edges
         }
