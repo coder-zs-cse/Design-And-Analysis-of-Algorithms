@@ -29,7 +29,7 @@ ull int power(ull n,int x){
 
 vector<vector<int>> MST_Prims(int V,int E,vector<vector<vector<int>>> &edges){
     vector<vector<int>> msTree;
-    priority_queue<vector<int>,vector<vector<int>>,greater<vector<int>>> pq ; 
+    priority_queue<vector<int>,vector<vector<int>>,greater<vector<int>>> pq; 
     rep(i,0,edges[1].size()){
         pq.push({edges[1][i][1],edges[1][i][0],1}); //{cost neighourOf1 1}
     }

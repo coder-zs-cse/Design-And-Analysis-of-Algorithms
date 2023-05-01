@@ -40,33 +40,33 @@ bool compare(pair<char,int> a,pair<char,int> b){
     return a.second < b.second;
 }
 
-TreeNode* chooseMinimum(queue<TreeNode*> &q1,queue<TreeNode*> &q2){
-    TreeNode *temp;
-    if(q1.empty()) {
-        temp = q2.front();
-        q2.pop();
-    }
-    else if(q2.empty()) {
-        temp = q1.front();
-        q1.pop();
-    }
-    else{
-        if(q1.front()->freq < q2.front()->freq){
-            temp = q1.front();
-            q1.pop();
-        }
-        else{
-            temp = q2.front();
-            q2.pop();
-        }
-    }
-    return temp;
-}
 class HuffmanCoding_2Q{
     TreeNode *root;
     map<char,string> bitsTable;
     double avgBits;
     
+    TreeNode* chooseMinimum(queue<TreeNode*> &q1,queue<TreeNode*> &q2){
+        TreeNode *temp;
+        if(q1.empty()) {
+            temp = q2.front();
+            q2.pop();
+        }
+        else if(q2.empty()) {
+            temp = q1.front();
+            q1.pop();
+        }
+        else{
+            if(q1.front()->freq < q2.front()->freq){
+                temp = q1.front();
+                q1.pop();
+            }
+            else{
+                temp = q2.front();
+                q2.pop();
+            }
+        }
+        return temp;
+    }
     TreeNode* buildTree(vector<pair<char,int>> &freqTable,int n){
         queue<TreeNode*> q1;
         queue<TreeNode*> q2;
